@@ -1,0 +1,10 @@
+C:\Users\david\Projects\WhatTheHex\What The Hex\What The Hex\bin\Debug\What The Hex.exe
+C:\Users\david\Projects\WhatTheHex\What The Hex\What The Hex\bin\Debug\What The Hex.pdb
+C:\Users\david\Projects\WhatTheHex\What The Hex\What The Hex\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Users\david\Projects\WhatTheHex\What The Hex\What The Hex\obj\x86\Debug\What_The_Hex.frmMain.resources
+C:\Users\david\Projects\WhatTheHex\What The Hex\What The Hex\obj\x86\Debug\What_The_Hex.Properties.Resources.resources
+C:\Users\david\Projects\WhatTheHex\What The Hex\What The Hex\obj\x86\Debug\GenerateResource.read.1.tlog
+C:\Users\david\Projects\WhatTheHex\What The Hex\What The Hex\obj\x86\Debug\GenerateResource.write.1.tlog
+C:\Users\david\Projects\WhatTheHex\What The Hex\What The Hex\obj\x86\Debug\What The Hex.exe
+C:\Users\david\Projects\WhatTheHex\What The Hex\What The Hex\obj\x86\Debug\What The Hex.pdb
+C:\Users\david\Projects\WhatTheHex\What The Hex\What The Hex\obj\x86\Debug\What_The_Hex.frmAbout.resources
