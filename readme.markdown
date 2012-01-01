@@ -5,6 +5,15 @@ GIMP.  When launched, What The Hex? takes and displays a screenshot,
 which you can click to get the desired RGB and Hex (HTML) information
 from the desired pixel.
 
+What The Hex? is free and open-source software.  The latest version of
+the source code can be downloaded from
+[GitHub](https://github.com/dHeinemann/What-The-Hex).  Precompiled
+versoins with fancy installers can [also be downloaded
+there](https://github.com/dHeinemann/What-The-Hex/downloads).
+
+##Requirements
+What The Hex? requires version 4.0 of the .Net framework.
+
 ##Future features
 * Easier panning/scrolling of screenshot using right-click, the
   spacebar, or similar.
