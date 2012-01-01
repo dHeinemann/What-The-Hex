@@ -8,8 +8,10 @@ from the desired pixel.
 What The Hex? is free and open-source software.  The latest version of
 the source code can be downloaded from
 [GitHub](https://github.com/dHeinemann/What-The-Hex).  Precompiled
-versoins with fancy installers can [also be downloaded
+versions with fancy installers can [also be downloaded
 there](https://github.com/dHeinemann/What-The-Hex/downloads).
+
+![What The Hex?](https://github.com/dHeinemann/What-The-Hex/raw/master/screenshot.png)
 
 ##Requirements
 What The Hex? requires version 4.0 of the .Net framework.
