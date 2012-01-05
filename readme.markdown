@@ -1,4 +1,4 @@
-What The Hex? is a free and open-source colour picking tool, just like the eyedrop tool in image editors such as GIMP. But unlike those editors, What The Hex? is designed to provide you with the Hex or RGB information you’re looking for in the fastest way possible.
+What The Hex? is a free and open-source colour picking tool, just like the eyedrop tool in image editors such as GIMP. But unlike those editors, What The Hex? is designed to provide you with the Hex or RGB information you're looking for in the fastest way possible.
 
 ![What The Hex?][1]
 
