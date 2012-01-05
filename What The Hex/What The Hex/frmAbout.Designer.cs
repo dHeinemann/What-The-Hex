@@ -34,6 +34,9 @@
             this.btnClose = new System.Windows.Forms.Button();
             this.lblLicense = new System.Windows.Forms.Label();
             this.llblWebsite = new System.Windows.Forms.LinkLabel();
+            this.lblWebsite = new System.Windows.Forms.Label();
+            this.lblSource = new System.Windows.Forms.Label();
+            this.llblSource = new System.Windows.Forms.LinkLabel();
             this.SuspendLayout();
             // 
             // lblTitle
@@ -60,7 +63,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(11, 70);
+            this.label1.Location = new System.Drawing.Point(9, 70);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(181, 13);
             this.label1.TabIndex = 2;
@@ -69,17 +72,17 @@
             // btnClose
             // 
             this.btnClose.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnClose.Location = new System.Drawing.Point(53, 149);
+            this.btnClose.Location = new System.Drawing.Point(51, 165);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(97, 23);
             this.btnClose.TabIndex = 3;
-            this.btnClose.Text = "All-righty then";
+            this.btnClose.Text = "Alrighty then";
             this.btnClose.UseVisualStyleBackColor = true;
             // 
             // lblLicense
             // 
             this.lblLicense.AutoSize = true;
-            this.lblLicense.Location = new System.Drawing.Point(27, 86);
+            this.lblLicense.Location = new System.Drawing.Point(18, 86);
             this.lblLicense.Name = "lblLicense";
             this.lblLicense.Size = new System.Drawing.Size(162, 13);
             this.lblLicense.TabIndex = 4;
@@ -88,13 +91,42 @@
             // llblWebsite
             // 
             this.llblWebsite.AutoSize = true;
-            this.llblWebsite.Location = new System.Drawing.Point(78, 116);
+            this.llblWebsite.Location = new System.Drawing.Point(82, 116);
             this.llblWebsite.Name = "llblWebsite";
-            this.llblWebsite.Size = new System.Drawing.Size(46, 13);
+            this.llblWebsite.Size = new System.Drawing.Size(90, 13);
             this.llblWebsite.TabIndex = 5;
             this.llblWebsite.TabStop = true;
-            this.llblWebsite.Text = "Website";
+            this.llblWebsite.Text = "dHeinemann.com";
             this.llblWebsite.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.llblWebsite_LinkClicked);
+            // 
+            // lblWebsite
+            // 
+            this.lblWebsite.AutoSize = true;
+            this.lblWebsite.Location = new System.Drawing.Point(27, 116);
+            this.lblWebsite.Name = "lblWebsite";
+            this.lblWebsite.Size = new System.Drawing.Size(49, 13);
+            this.lblWebsite.TabIndex = 6;
+            this.lblWebsite.Text = "Website:";
+            // 
+            // lblSource
+            // 
+            this.lblSource.AutoSize = true;
+            this.lblSource.Location = new System.Drawing.Point(27, 133);
+            this.lblSource.Name = "lblSource";
+            this.lblSource.Size = new System.Drawing.Size(44, 13);
+            this.lblSource.TabIndex = 7;
+            this.lblSource.Text = "Source:";
+            // 
+            // llblSource
+            // 
+            this.llblSource.AutoSize = true;
+            this.llblSource.Location = new System.Drawing.Point(82, 133);
+            this.llblSource.Name = "llblSource";
+            this.llblSource.Size = new System.Drawing.Size(63, 13);
+            this.llblSource.TabIndex = 8;
+            this.llblSource.TabStop = true;
+            this.llblSource.Text = "GitHub.com";
+            this.llblSource.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.llblSource_LinkClicked);
             // 
             // frmAbout
             // 
@@ -102,8 +134,11 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnClose;
-            this.ClientSize = new System.Drawing.Size(202, 184);
+            this.ClientSize = new System.Drawing.Size(194, 196);
             this.ControlBox = false;
+            this.Controls.Add(this.llblSource);
+            this.Controls.Add(this.lblSource);
+            this.Controls.Add(this.lblWebsite);
             this.Controls.Add(this.llblWebsite);
             this.Controls.Add(this.lblLicense);
             this.Controls.Add(this.btnClose);
@@ -133,5 +168,8 @@
         private System.Windows.Forms.Button btnClose;
         private System.Windows.Forms.Label lblLicense;
         private System.Windows.Forms.LinkLabel llblWebsite;
+        private System.Windows.Forms.Label lblWebsite;
+        private System.Windows.Forms.Label lblSource;
+        private System.Windows.Forms.LinkLabel llblSource;
     }
 }

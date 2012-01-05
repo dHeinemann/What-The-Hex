@@ -1,24 +1,35 @@
-##What's this, then?
-What The Hex? is a simple colour picker tool that reduces the need for
-taking screenshots and playing with image editors like Photoshop or
-GIMP.  When launched, What The Hex? takes and displays a screenshot,
-which you can click to get the desired RGB and Hex (HTML) information
-from the desired pixel.
+What The Hex? is a free and open-source colour picking tool, just like the eyedrop tool in image editors such as GIMP. But unlike those editors, What The Hex? is designed to provide you with the Hex or RGB information you’re looking for in the fastest way possible.
 
-What The Hex? is free and open-source software.  The latest version of
-the source code can be downloaded from
-[GitHub](https://github.com/dHeinemann/What-The-Hex).  Precompiled
-versions with fancy installers can [also be downloaded
-there](https://github.com/dHeinemann/What-The-Hex/downloads).
+![What The Hex?][1]
 
-![What The Hex?](https://github.com/dHeinemann/What-The-Hex/raw/master/screenshot.png)
+Instead of...
+
+1. Pressing the PrintScreen key
+2. Opening your image editor
+3. Pasting in your image
+4. Clicking the eyedrop tool
+
+You can...
+
+1. Open What The Hex?
+2. There is no Step 2
+
+What The Hex? automatically takes and displays a screenshot when opened, allowing you to click away at that little pixel and get the desired Hex and RGB information.
+
+##Download
+Installers for What The Hex? can be downloaded [here][2].
 
 ##Requirements
-What The Hex? requires version 4.0 of the .Net framework.
+The project is written in C#, with the .Net 4.0 framework.
 
 ##Future features
 * Easier panning/scrolling of screenshot using right-click, the
   spacebar, or similar.
+* Screenshot zooming
+
+##Changelog
+Information about the latest version of What The Hex? and the changes
+introduced can be found [here][3].
 
 ##License
 What The Hex? is released under the MIT license.
@@ -43,3 +54,7 @@ What The Hex? is released under the MIT license.
     CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
     TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
     SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+[1]: https://github.com/dHeinemann/What-The-Hex/raw/master/screenshot.png
+[2]: https://github.com/dHeinemann/What-The-Hex/downloads
+[3]: https://github.com/dHeinemann/What-The-Hex/blob/master/changelog.txt

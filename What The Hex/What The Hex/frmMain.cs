@@ -27,6 +27,7 @@ using System.Drawing;
 using System.Drawing.Imaging;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Windows.Forms;
 
 namespace What_The_Hex
@@ -49,13 +50,13 @@ namespace What_The_Hex
                 //picScreenshot.Width += 100;
                 //picScreenshot.Height += 100;
                 //bmpShot.SetResolution(bmpShot.HorizontalResolution + 5, bmpShot.VerticalResolution + 5)
-                
-                
+
+
             }
             else if (e.Delta < 0) //Out
             {
-              //  picScreenshot.Width -= 100;
-              //  picScreenshot.Height -= 100;
+                //  picScreenshot.Width -= 100;
+                //  picScreenshot.Height -= 100;
             }
         }
 
@@ -85,18 +86,7 @@ namespace What_The_Hex
 
         private void frmMain_Load(object sender, EventArgs e)
         {
-            bmpShot = new Bitmap(Screen.PrimaryScreen.Bounds.Width,
-                Screen.PrimaryScreen.Bounds.Height,
-                PixelFormat.Format32bppArgb);
-            gfxShot = Graphics.FromImage(bmpShot);
-            gfxShot.CopyFromScreen(Screen.PrimaryScreen.Bounds.X,
-                Screen.PrimaryScreen.Bounds.Y,
-                0, 0,
-                Screen.PrimaryScreen.Bounds.Size,
-                CopyPixelOperation.SourceCopy);
-            picScreenshot.Image = bmpShot;
-            picScreenshot.Width = bmpShot.Width;
-            picScreenshot.Height = bmpShot.Height;
+            takeScreenshot();
             //TODO: Have the user set his own bounds by clicking in the top left and bottom right corners of the area he wants, then use that as the screenshot.  Zoom to max so it's easy to pinpoint the desired colour.
         }
 
@@ -111,9 +101,96 @@ namespace What_The_Hex
             about.ShowDialog();
         }
 
-        private void btnClose_Click(object sender, EventArgs e)
+        private void takeScreenshot()
         {
-            Application.Exit();
+            bmpShot = new Bitmap(Screen.PrimaryScreen.Bounds.Width,
+                Screen.PrimaryScreen.Bounds.Height,
+                PixelFormat.Format32bppArgb);
+            gfxShot = Graphics.FromImage(bmpShot);
+            gfxShot.CopyFromScreen(Screen.PrimaryScreen.Bounds.X,
+                Screen.PrimaryScreen.Bounds.Y,
+                0, 0,
+                Screen.PrimaryScreen.Bounds.Size,
+                CopyPixelOperation.SourceCopy);
+            picScreenshot.Image = bmpShot;
+            picScreenshot.Width = bmpShot.Width;
+            picScreenshot.Height = bmpShot.Height;
+        }
+
+        private void btnNew_Click(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Minimized;
+            Thread.Sleep(500);
+            takeScreenshot();
+            this.WindowState = FormWindowState.Normal;
+        }
+
+        private void btnPaste_Click(object sender, EventArgs e)
+        {
+            if (Clipboard.ContainsImage())
+            {
+                bmpShot = new Bitmap(Clipboard.GetImage());
+                picScreenshot.Image = bmpShot;
+                picScreenshot.Width = bmpShot.Width;
+                picScreenshot.Height = bmpShot.Height;
+            }
+            else
+            {
+                lblStatus.Text = "Error: no image in clipboard.";
+            }
+            
+        }
+
+        private void btnClipHex_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Clipboard.SetText(txtHex.Text);
+                lblStatus.Text = "Hex copied to clipboard.";
+            }
+            catch (ArgumentNullException ex)
+            {
+                lblStatus.Text = "Error: cannot copy; no data.";
+            }
+        }
+
+        private void btnClipRed_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Clipboard.SetText(txtRed.Text);
+                lblStatus.Text = "Red copied to clipboard.";
+            }
+            catch (ArgumentNullException ex)
+            {
+                lblStatus.Text = "Error: cannot copy; no data.";
+            }
+        }
+
+        private void btnClipGreen_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Clipboard.SetText(txtGreen.Text);
+                lblStatus.Text = "Green copied to clipboard.";
+            }
+            catch (ArgumentNullException ex)
+            {
+                lblStatus.Text = "Error: cannot copy; no data.";
+            }
+        }
+
+        private void btnClipBlue_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Clipboard.SetText(txtBlue.Text);
+                lblStatus.Text = "Blue copied to clipboard.";
+            }
+            catch (ArgumentNullException ex)
+            {
+                lblStatus.Text = "Error: cannot copy; no data.";
+            }
         }
     }
 }

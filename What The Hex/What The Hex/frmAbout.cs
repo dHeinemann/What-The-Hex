@@ -39,10 +39,16 @@ namespace What_The_Hex
 
         private void frmAbout_Load(object sender, EventArgs e)
         {
-            lblVersion.Text = "v1.00";
+            lblVersion.Text = "v1.01";
         }
 
         private void llblWebsite_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            System.Diagnostics.Process.Start("http://www.dheinemann.com/projects/what-the-hex/");
+            Close();
+        }
+
+        private void llblSource_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             System.Diagnostics.Process.Start("https://github.com/dHeinemann/What-The-Hex");
             Close();
