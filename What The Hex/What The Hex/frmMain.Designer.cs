@@ -36,7 +36,11 @@
             this.txtGreen = new System.Windows.Forms.TextBox();
             this.txtBlue = new System.Windows.Forms.TextBox();
             this.grpHtml = new System.Windows.Forms.GroupBox();
+            this.btnClipHex = new System.Windows.Forms.Button();
             this.grpRgb = new System.Windows.Forms.GroupBox();
+            this.btnClipBlue = new System.Windows.Forms.Button();
+            this.btnClipGreen = new System.Windows.Forms.Button();
+            this.btnClipRed = new System.Windows.Forms.Button();
             this.lblBlue = new System.Windows.Forms.Label();
             this.lblGreen = new System.Windows.Forms.Label();
             this.picScreenshot = new System.Windows.Forms.PictureBox();
@@ -46,10 +50,6 @@
             this.btnAbout = new System.Windows.Forms.Button();
             this.btnNew = new System.Windows.Forms.Button();
             this.btnPaste = new System.Windows.Forms.Button();
-            this.btnClipHex = new System.Windows.Forms.Button();
-            this.btnClipRed = new System.Windows.Forms.Button();
-            this.btnClipGreen = new System.Windows.Forms.Button();
-            this.btnClipBlue = new System.Windows.Forms.Button();
             this.lblStatus = new System.Windows.Forms.Label();
             this.grpStatus = new System.Windows.Forms.GroupBox();
             this.grpHtml.SuspendLayout();
@@ -118,6 +118,17 @@
             this.grpHtml.TabStop = false;
             this.grpHtml.Text = "HTML";
             // 
+            // btnClipHex
+            // 
+            this.btnClipHex.Location = new System.Drawing.Point(148, 11);
+            this.btnClipHex.Name = "btnClipHex";
+            this.btnClipHex.Size = new System.Drawing.Size(23, 23);
+            this.btnClipHex.TabIndex = 4;
+            this.btnClipHex.TabStop = false;
+            this.btnClipHex.Text = "C";
+            this.btnClipHex.UseVisualStyleBackColor = true;
+            this.btnClipHex.Click += new System.EventHandler(this.btnClipHex_Click);
+            // 
             // grpRgb
             // 
             this.grpRgb.Controls.Add(this.btnClipBlue);
@@ -135,6 +146,39 @@
             this.grpRgb.TabIndex = 6;
             this.grpRgb.TabStop = false;
             this.grpRgb.Text = "RGB";
+            // 
+            // btnClipBlue
+            // 
+            this.btnClipBlue.Location = new System.Drawing.Point(148, 62);
+            this.btnClipBlue.Name = "btnClipBlue";
+            this.btnClipBlue.Size = new System.Drawing.Size(23, 23);
+            this.btnClipBlue.TabIndex = 4;
+            this.btnClipBlue.TabStop = false;
+            this.btnClipBlue.Text = "C";
+            this.btnClipBlue.UseVisualStyleBackColor = true;
+            this.btnClipBlue.Click += new System.EventHandler(this.btnClipBlue_Click);
+            // 
+            // btnClipGreen
+            // 
+            this.btnClipGreen.Location = new System.Drawing.Point(148, 36);
+            this.btnClipGreen.Name = "btnClipGreen";
+            this.btnClipGreen.Size = new System.Drawing.Size(23, 23);
+            this.btnClipGreen.TabIndex = 4;
+            this.btnClipGreen.TabStop = false;
+            this.btnClipGreen.Text = "C";
+            this.btnClipGreen.UseVisualStyleBackColor = true;
+            this.btnClipGreen.Click += new System.EventHandler(this.btnClipGreen_Click);
+            // 
+            // btnClipRed
+            // 
+            this.btnClipRed.Location = new System.Drawing.Point(148, 10);
+            this.btnClipRed.Name = "btnClipRed";
+            this.btnClipRed.Size = new System.Drawing.Size(23, 23);
+            this.btnClipRed.TabIndex = 4;
+            this.btnClipRed.TabStop = false;
+            this.btnClipRed.Text = "C";
+            this.btnClipRed.UseVisualStyleBackColor = true;
+            this.btnClipRed.Click += new System.EventHandler(this.btnClipRed_Click);
             // 
             // lblBlue
             // 
@@ -226,46 +270,6 @@
             this.btnPaste.Text = "Paste from Clipboard";
             this.btnPaste.UseVisualStyleBackColor = true;
             this.btnPaste.Click += new System.EventHandler(this.btnPaste_Click);
-            // 
-            // btnClipHex
-            // 
-            this.btnClipHex.Location = new System.Drawing.Point(148, 11);
-            this.btnClipHex.Name = "btnClipHex";
-            this.btnClipHex.Size = new System.Drawing.Size(23, 23);
-            this.btnClipHex.TabIndex = 4;
-            this.btnClipHex.Text = "C";
-            this.btnClipHex.UseVisualStyleBackColor = true;
-            this.btnClipHex.Click += new System.EventHandler(this.btnClipHex_Click);
-            // 
-            // btnClipRed
-            // 
-            this.btnClipRed.Location = new System.Drawing.Point(148, 10);
-            this.btnClipRed.Name = "btnClipRed";
-            this.btnClipRed.Size = new System.Drawing.Size(23, 23);
-            this.btnClipRed.TabIndex = 4;
-            this.btnClipRed.Text = "C";
-            this.btnClipRed.UseVisualStyleBackColor = true;
-            this.btnClipRed.Click += new System.EventHandler(this.btnClipRed_Click);
-            // 
-            // btnClipGreen
-            // 
-            this.btnClipGreen.Location = new System.Drawing.Point(148, 36);
-            this.btnClipGreen.Name = "btnClipGreen";
-            this.btnClipGreen.Size = new System.Drawing.Size(23, 23);
-            this.btnClipGreen.TabIndex = 4;
-            this.btnClipGreen.Text = "C";
-            this.btnClipGreen.UseVisualStyleBackColor = true;
-            this.btnClipGreen.Click += new System.EventHandler(this.btnClipGreen_Click);
-            // 
-            // btnClipBlue
-            // 
-            this.btnClipBlue.Location = new System.Drawing.Point(148, 62);
-            this.btnClipBlue.Name = "btnClipBlue";
-            this.btnClipBlue.Size = new System.Drawing.Size(23, 23);
-            this.btnClipBlue.TabIndex = 4;
-            this.btnClipBlue.Text = "C";
-            this.btnClipBlue.UseVisualStyleBackColor = true;
-            this.btnClipBlue.Click += new System.EventHandler(this.btnClipBlue_Click);
             // 
             // lblStatus
             // 
