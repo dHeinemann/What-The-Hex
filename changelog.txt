@@ -1,0 +1,12 @@
+v1.01a 2011-01-05
+* Fixed some typos in the Readme, and an instance of the old icon in the application.
+
+v1.01 2012-01-05
+* Added copy-to-clipboard buttons to each text box
+* Added New Screenshot button, to take a new screenshot without restarting What The Hex?
+* Added Paste from Clipboard button, to paste any image from the clipboard
+* Added a slightly fancier icon
+* Removed the Close button.
+
+v1.00 2012-01-02
+* Initial release
