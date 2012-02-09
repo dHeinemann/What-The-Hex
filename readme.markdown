@@ -17,15 +17,14 @@ You can...
 What The Hex? automatically takes and displays a screenshot when opened, allowing you to click away at that little pixel and get the desired Hex and RGB information.
 
 ##Download
-Installers for What The Hex? can be downloaded [here][2].
+The latest version of What The Hex? is v1.02.  Installers can be downloaded [here][2].
 
 ##Requirements
 The project is written in C#, with the .Net 4.0 framework.
 
 ##Future features
 * Easier panning/scrolling of screenshot using right-click, the
-  spacebar, or similar.
-* Screenshot zooming
+  spacebar, or similar, like in The GIMP.
 
 ##Changelog
 Information about the latest version of What The Hex? and the changes

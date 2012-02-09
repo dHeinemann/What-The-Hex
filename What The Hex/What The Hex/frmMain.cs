@@ -21,12 +21,8 @@
 
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
 using System.Drawing.Imaging;
-using System.Linq;
-using System.Text;
 using System.Threading;
 using System.Windows.Forms;
 
@@ -36,6 +32,8 @@ namespace What_The_Hex
     {
         Bitmap bmpShot;
         Graphics gfxShot;
+        Stack<Bitmap> inStack = new Stack<Bitmap>();
+        Stack<Bitmap> outStack = new Stack<Bitmap>();
 
         public frmMain()
         {
@@ -45,18 +43,37 @@ namespace What_The_Hex
 
         private void frmMain_MouseWheel(object sender, MouseEventArgs e)
         {
-            if (e.Delta > 0) //In
+            if (e.Delta > 0)
             {
-                //picScreenshot.Width += 100;
-                //picScreenshot.Height += 100;
-                //bmpShot.SetResolution(bmpShot.HorizontalResolution + 5, bmpShot.VerticalResolution + 5)
-
-
+                zoomIn();
             }
-            else if (e.Delta < 0) //Out
+            else if (e.Delta < 0)
             {
-                //  picScreenshot.Width -= 100;
-                //  picScreenshot.Height -= 100;
+                zoomOut();
+            }
+        }
+
+        private void zoomIn()
+        {
+            if (inStack.Count > 0)
+            {
+                bmpShot = inStack.Pop();
+                picScreenshot.Image = bmpShot;
+                picScreenshot.Width = bmpShot.Width;
+                picScreenshot.Height = bmpShot.Height;
+                outStack.Push(bmpShot);
+            }
+        }
+
+        private void zoomOut()
+        {
+            if (outStack.Count > 0)
+            {
+                bmpShot = outStack.Pop();
+                picScreenshot.Image = bmpShot;
+                picScreenshot.Width = bmpShot.Width;
+                picScreenshot.Height = bmpShot.Height;
+                inStack.Push(bmpShot);
             }
         }
 
@@ -87,7 +104,6 @@ namespace What_The_Hex
         private void frmMain_Load(object sender, EventArgs e)
         {
             takeScreenshot();
-            //TODO: Have the user set his own bounds by clicking in the top left and bottom right corners of the area he wants, then use that as the screenshot.  Zoom to max so it's easy to pinpoint the desired colour.
         }
 
         private void frmMain_Resize(object sender, EventArgs e)
@@ -99,6 +115,25 @@ namespace What_The_Hex
         {
             frmAbout about = new frmAbout();
             about.ShowDialog();
+        }
+
+        private void generateZooms(Bitmap image)
+        {
+            for (int i = 100; i >= 0; i -= 10)
+            {
+                inStack.Push(generateZoom(image, i));
+            }
+        }
+
+        private Bitmap generateZoom(Bitmap image, int zoomPercentage)
+        {
+            int newWidth = image.Width + image.Width * zoomPercentage / 100;
+            int newHeight = image.Height + image.Height * zoomPercentage / 100;
+
+            Bitmap output = new Bitmap(newWidth, newHeight);
+            Graphics gfxShot = Graphics.FromImage((Image)output);
+            gfxShot.DrawImage(image, 0, 0, newWidth, newHeight);
+            return output;
         }
 
         private void takeScreenshot()
@@ -115,6 +150,8 @@ namespace What_The_Hex
             picScreenshot.Image = bmpShot;
             picScreenshot.Width = bmpShot.Width;
             picScreenshot.Height = bmpShot.Height;
+
+            generateZooms(bmpShot);
         }
 
         private void btnNew_Click(object sender, EventArgs e)
@@ -138,7 +175,11 @@ namespace What_The_Hex
             {
                 lblStatus.Text = "Error: no image in clipboard.";
             }
-            
+        }
+
+        private void displayImage()
+        {
+            //Todo: Refactor other image display functions into this
         }
 
         private void btnClipHex_Click(object sender, EventArgs e)

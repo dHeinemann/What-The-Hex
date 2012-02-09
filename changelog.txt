@@ -1,4 +1,8 @@
-v1.01a 2011-01-05
+v1.02 2012-02-09
+* Removed tab stops from copy-to-clipboard buttons
+* Added zooming.  Use the mouse scroll wheel to zoom in and out.
+
+v1.01a 2012-01-05
 * Fixed some typos in the Readme, and an instance of the old icon in the application.
 
 v1.01 2012-01-05

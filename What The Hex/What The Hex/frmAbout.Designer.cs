@@ -43,7 +43,7 @@
             // 
             this.lblTitle.AutoSize = true;
             this.lblTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTitle.Location = new System.Drawing.Point(42, 9);
+            this.lblTitle.Location = new System.Drawing.Point(36, 9);
             this.lblTitle.Name = "lblTitle";
             this.lblTitle.Size = new System.Drawing.Size(119, 17);
             this.lblTitle.TabIndex = 0;
@@ -53,7 +53,7 @@
             // 
             this.lblVersion.AutoSize = true;
             this.lblVersion.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblVersion.Location = new System.Drawing.Point(83, 32);
+            this.lblVersion.Location = new System.Drawing.Point(77, 32);
             this.lblVersion.Name = "lblVersion";
             this.lblVersion.Size = new System.Drawing.Size(36, 15);
             this.lblVersion.TabIndex = 1;
@@ -63,7 +63,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(9, 70);
+            this.label1.Location = new System.Drawing.Point(5, 70);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(181, 13);
             this.label1.TabIndex = 2;
@@ -72,7 +72,7 @@
             // btnClose
             // 
             this.btnClose.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnClose.Location = new System.Drawing.Point(51, 165);
+            this.btnClose.Location = new System.Drawing.Point(47, 165);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(97, 23);
             this.btnClose.TabIndex = 3;
@@ -82,7 +82,7 @@
             // lblLicense
             // 
             this.lblLicense.AutoSize = true;
-            this.lblLicense.Location = new System.Drawing.Point(18, 86);
+            this.lblLicense.Location = new System.Drawing.Point(14, 86);
             this.lblLicense.Name = "lblLicense";
             this.lblLicense.Size = new System.Drawing.Size(162, 13);
             this.lblLicense.TabIndex = 4;
@@ -91,7 +91,7 @@
             // llblWebsite
             // 
             this.llblWebsite.AutoSize = true;
-            this.llblWebsite.Location = new System.Drawing.Point(82, 116);
+            this.llblWebsite.Location = new System.Drawing.Point(78, 116);
             this.llblWebsite.Name = "llblWebsite";
             this.llblWebsite.Size = new System.Drawing.Size(90, 13);
             this.llblWebsite.TabIndex = 5;
@@ -102,7 +102,7 @@
             // lblWebsite
             // 
             this.lblWebsite.AutoSize = true;
-            this.lblWebsite.Location = new System.Drawing.Point(27, 116);
+            this.lblWebsite.Location = new System.Drawing.Point(23, 116);
             this.lblWebsite.Name = "lblWebsite";
             this.lblWebsite.Size = new System.Drawing.Size(49, 13);
             this.lblWebsite.TabIndex = 6;
@@ -111,7 +111,7 @@
             // lblSource
             // 
             this.lblSource.AutoSize = true;
-            this.lblSource.Location = new System.Drawing.Point(27, 133);
+            this.lblSource.Location = new System.Drawing.Point(23, 133);
             this.lblSource.Name = "lblSource";
             this.lblSource.Size = new System.Drawing.Size(44, 13);
             this.lblSource.TabIndex = 7;
@@ -120,7 +120,7 @@
             // llblSource
             // 
             this.llblSource.AutoSize = true;
-            this.llblSource.Location = new System.Drawing.Point(82, 133);
+            this.llblSource.Location = new System.Drawing.Point(78, 133);
             this.llblSource.Name = "llblSource";
             this.llblSource.Size = new System.Drawing.Size(63, 13);
             this.llblSource.TabIndex = 8;
@@ -134,7 +134,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnClose;
-            this.ClientSize = new System.Drawing.Size(194, 196);
+            this.ClientSize = new System.Drawing.Size(190, 192);
             this.ControlBox = false;
             this.Controls.Add(this.llblSource);
             this.Controls.Add(this.lblSource);
