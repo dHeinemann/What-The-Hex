@@ -30,10 +30,9 @@ namespace What_The_Hex
 {
     public partial class frmMain : Form
     {
-        Bitmap bmpShot;
-        Graphics gfxShot;
         Stack<Bitmap> inStack = new Stack<Bitmap>();
         Stack<Bitmap> outStack = new Stack<Bitmap>();
+        Bitmap currentScreenshot;
 
         public frmMain()
         {
@@ -41,27 +40,13 @@ namespace What_The_Hex
             this.MouseWheel += new MouseEventHandler(frmMain_MouseWheel);
         }
 
-        private void frmMain_MouseWheel(object sender, MouseEventArgs e)
-        {
-            if (e.Delta > 0)
-            {
-                zoomIn();
-            }
-            else if (e.Delta < 0)
-            {
-                zoomOut();
-            }
-        }
-
         private void zoomIn()
         {
             if (inStack.Count > 0)
             {
-                bmpShot = inStack.Pop();
-                picScreenshot.Image = bmpShot;
-                picScreenshot.Width = bmpShot.Width;
-                picScreenshot.Height = bmpShot.Height;
-                outStack.Push(bmpShot);
+                Bitmap screenshot = inStack.Pop();
+                displayImage(screenshot);
+                outStack.Push(screenshot);
             }
         }
 
@@ -69,19 +54,78 @@ namespace What_The_Hex
         {
             if (outStack.Count > 0)
             {
-                bmpShot = outStack.Pop();
-                picScreenshot.Image = bmpShot;
-                picScreenshot.Width = bmpShot.Width;
-                picScreenshot.Height = bmpShot.Height;
-                inStack.Push(bmpShot);
+                Bitmap screenshot = outStack.Pop();
+                displayImage(screenshot);
+                inStack.Push(screenshot);
             }
+        }
+
+        private void generateZooms(Bitmap image)
+        {
+            if (inStack.Count > 0)
+                inStack.Clear();
+
+            if (outStack.Count > 0)
+                outStack.Clear();
+
+            for (int i = 100; i >= 0; i -= 10)
+                inStack.Push(generateZoomLevel(image, i));
+        }
+
+        private Bitmap generateZoomLevel(Bitmap image, int zoomPercentage)
+        {
+            int newWidth = image.Width + image.Width * zoomPercentage / 100;
+            int newHeight = image.Height + image.Height * zoomPercentage / 100;
+
+            Bitmap zoomedImage = new Bitmap(newWidth, newHeight);
+            Graphics gfxShot = Graphics.FromImage((Image)zoomedImage);
+            gfxShot.DrawImage(image, 0, 0, newWidth, newHeight);
+            return zoomedImage;
+        }
+
+        private void takeScreenshot()
+        {
+            Bitmap screenshot = new Bitmap(Screen.PrimaryScreen.Bounds.Width,
+                Screen.PrimaryScreen.Bounds.Height,
+                PixelFormat.Format32bppArgb);
+
+            Graphics gfxScreenshot = Graphics.FromImage(screenshot);
+            gfxScreenshot.CopyFromScreen(Screen.PrimaryScreen.Bounds.X,
+                Screen.PrimaryScreen.Bounds.Y,
+                0, 0,
+                Screen.PrimaryScreen.Bounds.Size,
+                CopyPixelOperation.SourceCopy);
+
+            displayImage(screenshot);
+            generateZooms(screenshot);
+        }
+
+        private void displayImage(Bitmap image)
+        {
+            currentScreenshot = image;
+            picScreenshot.Image = image;
+            picScreenshot.Width = image.Width;
+            picScreenshot.Height = image.Height;
+        }
+
+        private void frmMain_Load(object sender, EventArgs e)
+        {
+            takeScreenshot();
+        }
+
+        private void frmMain_MouseWheel(object sender, MouseEventArgs e)
+        {
+            if (e.Delta > 0)
+                zoomIn();
+            else if (e.Delta < 0)
+                zoomOut();
         }
 
         private void pictureBox1_MouseClick(object sender, MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Left)
             {
-                Color selectedColour = bmpShot.GetPixel(e.X, e.Y);
+                Color selectedColour = currentScreenshot.GetPixel(e.X, e.Y);
 
                 //RGB
                 txtRed.Text = Convert.ToString(selectedColour.R);
@@ -101,57 +145,10 @@ namespace What_The_Hex
             }
         }
 
-        private void frmMain_Load(object sender, EventArgs e)
-        {
-            takeScreenshot();
-        }
-
-        private void frmMain_Resize(object sender, EventArgs e)
-        {
-            //picScreenshot.SizeMode = PictureBoxSizeMode.Zoom;
-        }
-
         private void btnAbout_Click(object sender, EventArgs e)
         {
             frmAbout about = new frmAbout();
             about.ShowDialog();
-        }
-
-        private void generateZooms(Bitmap image)
-        {
-            for (int i = 100; i >= 0; i -= 10)
-            {
-                inStack.Push(generateZoom(image, i));
-            }
-        }
-
-        private Bitmap generateZoom(Bitmap image, int zoomPercentage)
-        {
-            int newWidth = image.Width + image.Width * zoomPercentage / 100;
-            int newHeight = image.Height + image.Height * zoomPercentage / 100;
-
-            Bitmap output = new Bitmap(newWidth, newHeight);
-            Graphics gfxShot = Graphics.FromImage((Image)output);
-            gfxShot.DrawImage(image, 0, 0, newWidth, newHeight);
-            return output;
-        }
-
-        private void takeScreenshot()
-        {
-            bmpShot = new Bitmap(Screen.PrimaryScreen.Bounds.Width,
-                Screen.PrimaryScreen.Bounds.Height,
-                PixelFormat.Format32bppArgb);
-            gfxShot = Graphics.FromImage(bmpShot);
-            gfxShot.CopyFromScreen(Screen.PrimaryScreen.Bounds.X,
-                Screen.PrimaryScreen.Bounds.Y,
-                0, 0,
-                Screen.PrimaryScreen.Bounds.Size,
-                CopyPixelOperation.SourceCopy);
-            picScreenshot.Image = bmpShot;
-            picScreenshot.Width = bmpShot.Width;
-            picScreenshot.Height = bmpShot.Height;
-
-            generateZooms(bmpShot);
         }
 
         private void btnNew_Click(object sender, EventArgs e)
@@ -166,10 +163,9 @@ namespace What_The_Hex
         {
             if (Clipboard.ContainsImage())
             {
-                bmpShot = new Bitmap(Clipboard.GetImage());
-                picScreenshot.Image = bmpShot;
-                picScreenshot.Width = bmpShot.Width;
-                picScreenshot.Height = bmpShot.Height;
+                Bitmap screenshot = new Bitmap(Clipboard.GetImage());
+                displayImage(screenshot);
+                generateZooms(screenshot);
             }
             else
             {
@@ -177,11 +173,7 @@ namespace What_The_Hex
             }
         }
 
-        private void displayImage()
-        {
-            //Todo: Refactor other image display functions into this
-        }
-
+        #region Clipboard functions
         private void btnClipHex_Click(object sender, EventArgs e)
         {
             try
@@ -233,5 +225,6 @@ namespace What_The_Hex
                 lblStatus.Text = "Error: cannot copy; no data.";
             }
         }
+        #endregion
     }
 }

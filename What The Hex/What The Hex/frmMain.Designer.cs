@@ -307,7 +307,6 @@
             this.Name = "frmMain";
             this.Text = "What The Hex?";
             this.Load += new System.EventHandler(this.frmMain_Load);
-            this.Resize += new System.EventHandler(this.frmMain_Resize);
             this.grpHtml.ResumeLayout(false);
             this.grpHtml.PerformLayout();
             this.grpRgb.ResumeLayout(false);

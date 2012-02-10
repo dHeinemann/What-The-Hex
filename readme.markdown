@@ -17,7 +17,7 @@ You can...
 What The Hex? automatically takes and displays a screenshot when opened, allowing you to click away at that little pixel and get the desired Hex and RGB information.
 
 ##Download
-The latest version of What The Hex? is v1.02.  Installers can be downloaded [here][2].
+The latest version of What The Hex? is v1.03.  Installers can be downloaded [here][2].
 
 ##Requirements
 The project is written in C#, with the .Net 4.0 framework.
