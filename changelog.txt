@@ -1,9 +1,12 @@
+v1.04 2012-02-14
+* Fixed duplicate items in zoom stack
+
 v1.03 2012-02-10
-* Fixed a bug with zoom not working for pasted screenshots
+* Fixed zoom not working for pasted screenshots
 
 v1.02 2012-02-09
 * Removed tab stops from copy-to-clipboard buttons
-* Added zooming.  Use the mouse scroll wheel to zoom in and out.
+* Added zooming - use the mouse scroll wheel to zoom in and out.
 
 v1.01a 2012-01-05
 * Fixed some typos in the Readme, and an instance of the old icon in the application.

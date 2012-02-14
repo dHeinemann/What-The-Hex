@@ -39,7 +39,7 @@ namespace What_The_Hex
 
         private void frmAbout_Load(object sender, EventArgs e)
         {
-            lblVersion.Text = "v1.03";
+            lblVersion.Text = "v1.04";
         }
 
         private void llblWebsite_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)

@@ -44,9 +44,9 @@ namespace What_The_Hex
         {
             if (inStack.Count > 0)
             {
+                outStack.Push(currentScreenshot);
                 Bitmap screenshot = inStack.Pop();
                 displayImage(screenshot);
-                outStack.Push(screenshot);
             }
         }
 
@@ -54,9 +54,9 @@ namespace What_The_Hex
         {
             if (outStack.Count > 0)
             {
+                inStack.Push(currentScreenshot);
                 Bitmap screenshot = outStack.Pop();
                 displayImage(screenshot);
-                inStack.Push(screenshot);
             }
         }
 
@@ -68,7 +68,7 @@ namespace What_The_Hex
             if (outStack.Count > 0)
                 outStack.Clear();
 
-            for (int i = 100; i >= 0; i -= 10)
+            for (int i = 100; i >= 10; i -= 10)
                 inStack.Push(generateZoomLevel(image, i));
         }
 
