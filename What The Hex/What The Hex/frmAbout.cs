@@ -20,12 +20,7 @@
 // SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Windows.Forms;
 
 namespace What_The_Hex
@@ -35,11 +30,12 @@ namespace What_The_Hex
         public frmAbout()
         {
             InitializeComponent();
+            picIcon.Image = new Bitmap(@"wth.ico");
         }
 
         private void frmAbout_Load(object sender, EventArgs e)
         {
-            lblVersion.Text = "v1.04";
+            lblVersion.Text = @"v1.05";
         }
 
         private void llblWebsite_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)

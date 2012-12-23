@@ -104,7 +104,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="wth.ico" />
+    <Content Include="wth.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.0,Profile=Client">

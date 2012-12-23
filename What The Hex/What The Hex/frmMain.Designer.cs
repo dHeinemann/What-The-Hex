@@ -1,4 +1,6 @@
-﻿namespace What_The_Hex
+﻿using System.Drawing;
+
+namespace What_The_Hex
 {
     partial class frmMain
     {
@@ -346,6 +348,16 @@
         private System.Windows.Forms.Label lblStatus;
         private System.Windows.Forms.GroupBox grpStatus;
 
+        private Bitmap generateZoomLevel(Bitmap image, int zoomPercentage)
+        {
+            int newWidth = image.Width + image.Width * zoomPercentage / 100;
+            int newHeight = image.Height + image.Height * zoomPercentage / 100;
+
+            Bitmap zoomedImage = new Bitmap(newWidth, newHeight);
+            Graphics gfxShot = Graphics.FromImage((Image)zoomedImage);
+            gfxShot.DrawImage(image, 0, 0, newWidth, newHeight);
+            return zoomedImage;
+        }
     }
 }
 

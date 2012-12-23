@@ -37,30 +37,36 @@ namespace What_The_Hex
         public frmMain()
         {
             InitializeComponent();
-            this.MouseWheel += new MouseEventHandler(frmMain_MouseWheel);
+            picScreenshot.MouseWheel += new MouseEventHandler(picScreenshot_MouseWheel);
         }
 
-        private void zoomIn()
+        /// <summary>
+        /// Switch to the next screenshot in <c>inStack</c>.
+        /// </summary>
+        private void ZoomIn()
         {
-            if (inStack.Count > 0)
-            {
-                outStack.Push(currentScreenshot);
-                Bitmap screenshot = inStack.Pop();
-                displayImage(screenshot);
-            }
+            if (inStack.Count <= 0) return;
+            outStack.Push(currentScreenshot);
+            Bitmap screenshot = inStack.Pop();
+            DisplayImage(screenshot);
         }
 
-        private void zoomOut()
+        /// <summary>
+        /// Switch to the next screenshot in <c>outStack</c>.
+        /// </summary>
+        private void ZoomOut()
         {
-            if (outStack.Count > 0)
-            {
-                inStack.Push(currentScreenshot);
-                Bitmap screenshot = outStack.Pop();
-                displayImage(screenshot);
-            }
+            if (outStack.Count <= 0) return;
+            inStack.Push(currentScreenshot);
+            Bitmap screenshot = outStack.Pop();
+            DisplayImage(screenshot);
         }
 
-        private void generateZooms(Bitmap image)
+        /// <summary>
+        /// Generate 10 zoomed images from a Bitmap, and push them into <c>inStack</c>.
+        /// </summary>
+        /// <param name="image">Image to generate zooms for.</param>
+        private void GenerateZooms(Bitmap image)
         {
             if (inStack.Count > 0)
                 inStack.Clear();
@@ -72,35 +78,30 @@ namespace What_The_Hex
                 inStack.Push(generateZoomLevel(image, i));
         }
 
-        private Bitmap generateZoomLevel(Bitmap image, int zoomPercentage)
+        /// <summary>
+        /// Capture and display a screenshot.
+        /// </summary>
+        private void TakeScreenshot()
         {
-            int newWidth = image.Width + image.Width * zoomPercentage / 100;
-            int newHeight = image.Height + image.Height * zoomPercentage / 100;
-
-            Bitmap zoomedImage = new Bitmap(newWidth, newHeight);
-            Graphics gfxShot = Graphics.FromImage((Image)zoomedImage);
-            gfxShot.DrawImage(image, 0, 0, newWidth, newHeight);
-            return zoomedImage;
-        }
-
-        private void takeScreenshot()
-        {
-            Bitmap screenshot = new Bitmap(Screen.PrimaryScreen.Bounds.Width,
+            var screenshot = new Bitmap(Screen.PrimaryScreen.Bounds.Width,
                 Screen.PrimaryScreen.Bounds.Height,
                 PixelFormat.Format32bppArgb);
 
-            Graphics gfxScreenshot = Graphics.FromImage(screenshot);
+            var gfxScreenshot = Graphics.FromImage(screenshot);
             gfxScreenshot.CopyFromScreen(Screen.PrimaryScreen.Bounds.X,
-                Screen.PrimaryScreen.Bounds.Y,
-                0, 0,
+                Screen.PrimaryScreen.Bounds.Y, 0, 0,
                 Screen.PrimaryScreen.Bounds.Size,
                 CopyPixelOperation.SourceCopy);
 
-            displayImage(screenshot);
-            generateZooms(screenshot);
+            DisplayImage(screenshot);
+            GenerateZooms(screenshot);
         }
 
-        private void displayImage(Bitmap image)
+        /// <summary>
+        /// Display an image.
+        /// </summary>
+        /// <param name="image">Image to display.</param>
+        private void DisplayImage(Bitmap image)
         {
             currentScreenshot = image;
             picScreenshot.Image = image;
@@ -110,15 +111,19 @@ namespace What_The_Hex
 
         private void frmMain_Load(object sender, EventArgs e)
         {
-            takeScreenshot();
+            TakeScreenshot();
         }
 
-        private void frmMain_MouseWheel(object sender, MouseEventArgs e)
+        private void picScreenshot_MouseWheel(object sender, MouseEventArgs e)
         {
-            if (e.Delta > 0)
-                zoomIn();
-            else if (e.Delta < 0)
-                zoomOut();
+            if (Control.ModifierKeys == Keys.Control)
+            {
+                ((HandledMouseEventArgs)e).Handled = true;
+                if (e.Delta > 0)
+                    ZoomIn();
+                else if (e.Delta < 0)
+                    ZoomOut();
+            }
         }
 
         private void pictureBox1_MouseClick(object sender, MouseEventArgs e)
@@ -133,7 +138,7 @@ namespace What_The_Hex
                 txtBlue.Text = Convert.ToString(selectedColour.B);
 
                 //Hex
-                txtHex.Text = "#"
+                txtHex.Text = @"#"
                     + selectedColour.R.ToString("X")
                     + selectedColour.G.ToString("X")
                     + selectedColour.B.ToString("X");
@@ -147,7 +152,7 @@ namespace What_The_Hex
 
         private void btnAbout_Click(object sender, EventArgs e)
         {
-            frmAbout about = new frmAbout();
+            var about = new frmAbout();
             about.ShowDialog();
         }
 
@@ -155,7 +160,7 @@ namespace What_The_Hex
         {
             this.WindowState = FormWindowState.Minimized;
             Thread.Sleep(500);
-            takeScreenshot();
+            TakeScreenshot();
             this.WindowState = FormWindowState.Normal;
         }
 
@@ -163,13 +168,13 @@ namespace What_The_Hex
         {
             if (Clipboard.ContainsImage())
             {
-                Bitmap screenshot = new Bitmap(Clipboard.GetImage());
-                displayImage(screenshot);
-                generateZooms(screenshot);
+                var screenshot = new Bitmap(Clipboard.GetImage());
+                DisplayImage(screenshot);
+                GenerateZooms(screenshot);
             }
             else
             {
-                lblStatus.Text = "Error: no image in clipboard.";
+                lblStatus.Text = @"Error: no image in clipboard.";
             }
         }
 

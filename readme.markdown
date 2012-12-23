@@ -1,4 +1,7 @@
-What The Hex? is a free and open-source colour picking tool, just like the eyedrop tool in image editors such as GIMP. But unlike those editors, What The Hex? is designed to provide you with the Hex or RGB information you're looking for in the fastest way possible.
+What The Hex? is a free and open-source colour picking tool, just like
+the eyedrop tool in image editors such as GIMP. But unlike those
+editors, What The Hex? is designed to provide you with the Hex or RGB
+information you're looking for in the fastest way possible.  
 
 ![What The Hex?][1]
 
@@ -14,21 +17,17 @@ You can...
 1. Open What The Hex?
 2. There is no Step 2
 
-What The Hex? automatically takes and displays a screenshot when opened, allowing you to click away at that little pixel and get the desired Hex and RGB information.
+What The Hex? automatically takes and displays a screenshot when opened,
+allowing you to simply zoom and click to find a pixel's hex and RGB
+information.
 
 ##Download
-The latest version of What The Hex? is v1.04.  Installers can be downloaded [here][2].
+The latest version of What The Hex? is [v1.05][2]. See
+[changelog.txt][3] for a list of changes.
 
 ##Requirements
-The project is written in C#, with the .Net 4.0 framework.
-
-##Future features
-* Easier panning/scrolling of screenshot using right-click, the
-  spacebar, or similar, like in The GIMP.
-
-##Changelog
-Information about the latest version of What The Hex? and the changes
-introduced can be found [here][3].
+* Microsoft Windows XP/7/8.
+* [Microsoft .NET 4.0 Framework][4].
 
 ##License
 What The Hex? is released under the MIT license.
@@ -55,5 +54,6 @@ What The Hex? is released under the MIT license.
     SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 [1]: https://github.com/dHeinemann/What-The-Hex/raw/master/screenshot.png
-[2]: https://github.com/dHeinemann/What-The-Hex/downloads
+[2]: https://dl.dropbox.com/u/4630539/Projects/Releases/What%20The%20Hex/WhatTheHex105.zip
 [3]: https://github.com/dHeinemann/What-The-Hex/blob/master/changelog.txt
+[4]: https://www.microsoft.com/en-us/download/details.aspx?id=17851

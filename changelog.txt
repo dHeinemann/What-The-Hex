@@ -1,3 +1,7 @@
+v1.05 2012-12-24
+* Fixed zooming under Windows 8.
+* Changed zooming controls - hold CTRL and use the scroll wheel to zoom in and out.
+
 v1.04 2012-02-14
 * Fixed duplicate items in zoom stack
 
